@@ -1,0 +1,233 @@
+@keyframes slideUp {
+    from {
+        transform: translateY(100%); /* Start from below the screen */
+    }
+    to {
+        transform: translateY(0); /* End at its normal position */
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-anim {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.chat-drawer {
+    z-index: -100;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    /* Additional styling */
+    animation: slideUp 0.5s ease-out; /* Apply the animation */
+    transform: translateY(100%); /* Start off-screen */
+    transition: transform 0.5s ease-out;
+}
+
+.chat-drawer.open {
+    z-index: 2;
+    transform: translateY(0);
+}
+
+.backdrop {
+    z-index: -100;
+    opacity: 0; /* Start with the backdrop being invisible */
+    transition: opacity 0.5s ease; /* Smooth transition for the opacity */
+}
+
+/* When the drawer is open, increase the opacity of the backdrop */
+.backdrop.open {
+    z-index: 1;
+    opacity: 0.5; /* Adjust this value based on your desired final opacity */
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-black backdrop */
+    /* Additional styling */
+}
+
+.chat-title {
+    font-size: 1.2em;
+}
+
+.close-icon {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: white;
+    font-size: 1.5em;
+}
+
+.chat-window {
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-flow: column;
+    font-size: 1.1em;
+    /* Styling for chat window */
+}
+
+.chat-header {
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 90px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    /* Additional styling */
+}
+
+.chat-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px; /* Add some padding */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between messages */
+}
+
+
+.message {
+    /*max-width: 70%; !* Maximum width of a message *!*/
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    word-break: break-word; /* Ensures text breaks properly */
+}
+
+.context-message {
+    background-color: #ffffe0; /* Light yellow background, for example */
+    align-self: center;
+    font-style: italic; /* Styling to indicate a different type of text */
+    border-radius: 10px; /* Optional: different border radius */
+    padding: 10px;
+    max-width: 80%; /* Optional: wider than regular messages */
+    border: 1px solid #dcdcdc; /* Optional: border to emphasize it's a different kind of message */
+}
+
+.ai-message {
+    background-color: #f0f0f0; /* Light background for AI messages */
+    align-self: flex-start;
+    border-top-left-radius: 0; /* Stylistic choice for speech bubble effect */
+}
+
+.user-message {
+    background-color: #f0f0f0; /* Light background for AI messages */
+    align-self: flex-end;
+    border-top-right-radius: 0; /* Speech bubble effect for user messages */
+}
+
+.message-text {
+    /* Add any specific styling for the message text here */
+}
+.chat-footer {
+    display: flex;
+    align-items: center;
+    background-color: #D9D9D9;
+    height: 90px;
+    width: 100vw;
+    flex-shrink: 0;
+    flex-grow: 0;
+    box-sizing: border-box;
+    padding: 0 22px;
+    gap: 12px;
+    /* Additional styling */
+}
+
+.input-container {
+    position: relative;
+    flex-grow: 1; /* If you want the input to fill the space */
+    /* Additional styling */
+}
+
+.chat-input {
+
+    /* Resetting default styles */
+    border: none;              /* Removes the border */
+    outline: none;             /* Removes the outline */
+    background: white;   /* Makes the background transparent */
+    margin: 0;                 /* Resets any default margin */
+    padding: 0;                /* Resets any default padding */
+    font-family: inherit;      /* Inherits font from parent */
+    font-size: 1.1em;            /* Sets a standard font size */
+    color: inherit;            /* Inherits font color from parent */
+    line-height: normal;       /* Resets any default line height */
+    box-shadow: none;          /* Removes box shadow if any */
+
+    border-radius: 40px;
+    height: 52px;
+    width: 100%;
+    padding-right: 52px; /* Adjust based on button size */
+    padding-left: 12px; /* Adjust based on button size */
+    box-sizing: border-box;
+
+    /* Additional styling */
+}
+
+.chat-send-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px; /* Adjust size as needed */
+    height: 42px;
+    border-radius: 50%;
+    background-color: #424242;
+    color: white;
+    border: none;
+    cursor: pointer;
+    /* Align text or icon in the center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-send-button:hover {
+    background-color: #535353; /* Slightly lighter for hover */
+}
+
+.chat-send-button:active {
+    background-color: #333333; /* Slightly darker for pressed */
+}
+
+.ai-button {
+    width: 42px; /* Adjust size as needed */
+    height: 42px;
+    border-radius: 50%;
+    background-color: #424242;
+    color: white;
+    border: none;
+    cursor: pointer;
+    /* Align text or icon in the center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai-button:hover {
+    background-color: #535353; /* Slightly lighter for hover */
+}
+
+.ai-button:active {
+    background-color: #333333; /* Slightly darker for pressed */
+}
